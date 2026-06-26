@@ -1,0 +1,32 @@
+import { useEffect, useRef } from "react";
+
+export const useScrollReveal = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            // Stop observing once revealed to maintain state
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.05,
+        rootMargin: "0px 0px -50px 0px"
+      }
+    );
+
+    const elements = containerRef.current?.querySelectorAll(".reveal-on-scroll");
+    elements?.forEach((el) => observer.observe(el));
+
+    return () => {
+      elements?.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
+  return containerRef;
+};

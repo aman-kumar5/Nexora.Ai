@@ -1,0 +1,286 @@
+@import "tailwindcss";
+
+:root {
+  /* Default: Dark Theme (Oceanic Noir) */
+  --bg-primary: #07141a;
+  --bg-secondary: #0f2631;
+  --text-primary: #F1F6F4;
+  --text-secondary: #c4d5cf;
+  --border-primary: rgba(196, 213, 207, 0.08);
+  --card-bg: rgba(15, 38, 49, 0.35);
+  --spotlight-color: rgba(255, 215, 0, 0.05);
+}
+
+.light {
+  /* Light Theme Override */
+  --bg-primary: #F1F6F4;
+  --bg-secondary: #c4d5cf;
+  --text-primary: #07141a;
+  --text-secondary: #0f2631;
+  --border-primary: rgba(15, 38, 49, 0.1);
+  --card-bg: rgba(15, 38, 49, 0.04);
+  --spotlight-color: rgba(255, 163, 0, 0.05);
+}
+
+@theme {
+  --color-oceanic-noir: #07141a;
+  --color-nocturnal-expedition: #0f2631;
+  --color-arctic-powder: #F1F6F4;
+  --color-mystic-mint: #c4d5cf;
+  --color-forsythia-yellow: #ffd700;
+  --color-deep-saffron: #ffa300;
+
+  /* Theme Switchable Colors */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-primary: var(--border-primary);
+  --color-card-bg: var(--card-bg);
+
+  --font-jetbrains: 'JetBrains Mono', ui-monospace, monospace;
+  --font-inter: 'Inter', system-ui, sans-serif;
+
+  --animate-float-slow: float 8s ease-in-out infinite;
+  --animate-float-medium: float 6s ease-in-out infinite;
+  --animate-float-fast: float 4s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 5s ease-in-out infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-mesh: meshGrad 20s ease infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.15;
+    filter: blur(100px);
+  }
+  50% {
+    opacity: 0.3;
+    filter: blur(120px);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes meshGrad {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Background patterns */
+.bg-grid-pattern {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, var(--border-primary) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-primary) 1px, transparent 1px);
+}
+
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+}
+
+.bg-gradient-mesh {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+  background-size: 400% 400%;
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom glow borders */
+.glow-border {
+  position: relative;
+}
+.glow-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(255, 200, 1, 0.15) 0%, rgba(255, 153, 50, 0.15) 50%, transparent 100%);
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+.glow-border:hover::after {
+  opacity: 1;
+}
+
+/* SVG workflow pulse animation */
+.svg-pulse-line {
+  stroke-dasharray: 8 8;
+  animation: strokePulse 20s linear infinite;
+}
+
+@keyframes strokePulse {
+  to {
+    stroke-dashoffset: -200;
+  }
+}
+
+/* Smooth layout height transition */
+.accordion-transition {
+  transition: grid-template-rows 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms ease, padding 300ms ease;
+}
+
+/* 3D Bento Card tilt styling */
+.bento-card-tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-out, border-color 0.3s ease, background-color 0.3s ease;
+  will-change: transform;
+}
+
+/* Hardware accelerated Hero entrance animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes letterReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-letter-reveal {
+  animation: letterReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  display: inline-block;
+  will-change: opacity, transform, filter;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-cursor-blink {
+  animation: blink 1s step-end infinite;
+  display: inline-block;
+}
+
+@keyframes orbFloat1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.08);
+  }
+  66% {
+    transform: translate(-25px, 20px) scale(0.95);
+  }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1.05);
+  }
+  50% {
+    transform: translate(-30px, 30px) scale(0.92);
+  }
+}
+
+.animate-orb-float-1 {
+  animation: orbFloat1 18s ease-in-out infinite;
+}
+
+.animate-orb-float-2 {
+  animation: orbFloat2 14s ease-in-out infinite;
+}
+
+.animate-hero-desc {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
+  opacity: 0;
+}
+
+.animate-hero-cta {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+  opacity: 0;
+}
+
+.animate-hero-terminal {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.95s forwards;
+  opacity: 0;
+}
+
+.animate-hero-visual {
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  opacity: 0;
+}
+
+/* Central Active Card Glowing pulse border */
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: rgba(255, 200, 1, 0.4);
+    box-shadow: 0 15px 35px rgba(255, 200, 1, 0.08);
+  }
+  50% {
+    border-color: rgba(255, 153, 50, 0.7);
+    box-shadow: 0 15px 40px rgba(255, 153, 50, 0.15);
+  }
+}
+
+.animate-border-glow {
+  animation: borderGlow 3.5s ease-in-out infinite;
+  will-change: border-color, box-shadow;
+}
+
+/* Global transitions for theme switching */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto; /* Ensure vertical scrolling is always active */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Focus outline settings */
+*:focus-visible {
+  outline: 2px solid #FFC801;
+  outline-offset: 2px;
+}
