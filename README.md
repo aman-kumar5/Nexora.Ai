@@ -16,9 +16,9 @@ A premium, high-performance SaaS landing page showcasing an advanced AI-powered 
 
 ## 🌐 Live Demo
 
-🔗 **Website:** https://your-vercel-link.vercel.app
+🔗 **Website:** https://nexora-ai-inky.vercel.app/
 
-📹 **Demo Video:** https://drive.google.com/...
+📹 **Demo Video:** https://drive.google.com/file/d/1aws_mY1f5S-mdxa8ooy6F8lXShusmo5_/view?usp=sharing
 
 ---
 
@@ -237,45 +237,44 @@ Used for
 
 # 📂 Project Structure
 
-```
-
-src/
-
+```text
+Nexora-AI/
 │
-
-├── assets/
-
-├── components/
-
-│ ├── Navbar
-
-│ ├── Hero
-
-│ ├── Features
-
-│ ├── Pricing
-
-│ ├── Testimonials
-
-│ ├── FAQ
-
-│ ├── Footer
-
+├── src/
+│   │
+│   ├── components/
+│   │   ├── FAQ.tsx
+│   │   ├── FeatureShowcase.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── Pricing.tsx
+│   │   ├── Statistics.tsx
+│   │   ├── Testimonials.tsx
+│   │   ├── ThreeCanvas.tsx
+│   │   ├── TrustedCompanies.tsx
+│   │   └── WorkflowShowcase.tsx
+│   │
+│   ├── hooks/
+│   │   └── useScrollReveal.ts
+│   │
+│   ├── App.css
+│   ├── App.tsx
+│   ├── index.css
+│   └── main.tsx
 │
-
-├── hooks/
-
-├── utils/
-
-├── styles/
-
-├── App.jsx
-
-└── main.jsx
-
+├── SVG/
+│
+├── .gitignore
+├── .oxlintrc.json
+├── colorPallet.pdf
+├── fonts.pdf
+├── index.html
+├── logo.png
+├── package-lock.json
+├── package.json
+└── README.md
 ```
-
----
 
 # ⚙️ Core Functionalities
 
@@ -345,32 +344,6 @@ for maximum performance.
 
 ---
 
-# 📷 Screenshots
-
-## Hero
-
-(Add Screenshot)
-
----
-
-## Features
-
-(Add Screenshot)
-
----
-
-## Pricing
-
-(Add Screenshot)
-
----
-
-## Mobile View
-
-(Add Screenshot)
-
----
-
 # 🚀 Future Enhancements
 
 - AI Workflow Builder Demo
@@ -400,19 +373,7 @@ This project demonstrates practical implementation of
 
 ---
 
-# 🤝 Contributing
 
-Contributions are welcome.
-
-Feel free to fork the repository, create feature branches, and submit pull requests.
-
----
-
-# 📄 License
-
-This project is intended for educational, portfolio, and demonstration purposes.
-
----
 
 # 👨‍💻 Author
 
@@ -425,7 +386,3 @@ MIT World Peace University
 Frontend Developer | AI Enthusiast | Full Stack Developer
 
 ---
-
-<p align="center">
-⭐ If you like this project, don't forget to star the repository!
-</p>
